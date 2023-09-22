@@ -6,8 +6,6 @@ import { Form } from "react-bootstrap";
 import "./TextEditing.css";
 import { useDispatch } from "react-redux";
 import { sendMailHandler } from "../../store/Mail-thunk";
-
-
 const TextEditing = () => {
   const Disptach = useDispatch();
   const Enteredemail = React.createRef(null);
@@ -25,14 +23,12 @@ const TextEditing = () => {
   };
   return (
     <React.Fragment>
-      <Container>
+        <Container fluid>
         <Row>
           <Col>
-            <Form className="pt-4" onSubmit={FormsubmitHandler}>
-              <Card style={{ width: "50rem" }} border="success">
-                <Card.Header>
-                  <h3>welcome </h3>
-                </Card.Header>
+          <Form className="pt-1 pr=3" onSubmit={FormsubmitHandler}>
+              <Card style={{ width: "50rem" }}>
+
                 <Card.Body className="colours">
                   <Form.Group controlId="email">
                     <Form.Label>Email Address</Form.Label>
@@ -56,7 +52,6 @@ const TextEditing = () => {
                     <Form.Control as="textarea" rows={5} ref={Enteredtext} />
                   </Form.Group>
                 </Card.Body>
-
                 <Card.Footer>
                   <Editor
                     // editorState={editorState}
