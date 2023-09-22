@@ -3,8 +3,10 @@ import Form from "react-bootstrap/Form";
 import React from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { sendsignup,Sendlogin}   from "../store/Action-thunk"
-import { UisliceAction } from "../store/Uivisible";
+import { AuthsliceAction } from "../store/Auth";
+import { Sendlogin,sendsignup } from "../store/Action-thunk";
+import UisliceAction from "../store/Uivisible";
+
 const AuthForm = () => {
   const Disptach = useDispatch();
   const islogin = useSelector((state) => state.uiauth.islogin);
@@ -38,7 +40,6 @@ const AuthForm = () => {
   return (
     <Container className="pt-5">
       <Row className="justify-content-md-center">
-       
         <Col xs={12} md={6}>
           <Form
             className="shadow p-3 mt-5 bg-white rounded"

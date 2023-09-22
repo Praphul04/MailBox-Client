@@ -16,19 +16,21 @@ const TextEditing = () => {
     const mailData = {
       email: Enteredemail.current.value,
       subject: Enteredsubject.current.value,
-      text: Enteredsubject.current.value,
+      text: Enteredtext.current.value,
+      readreceipt: false,
     };
     Disptach(sendMailHandler(mailData));
     console.log(mailData, "TextEditing-FormsubmitHandler");
   };
   return (
     <React.Fragment>
-        <Container fluid>
+      <Container fluid>
         <Row>
           <Col>
+    
           <Form className="pt-1 pr=3" onSubmit={FormsubmitHandler}>
               <Card style={{ width: "50rem" }}>
-
+              
                 <Card.Body className="colours">
                   <Form.Group controlId="email">
                     <Form.Label>Email Address</Form.Label>
