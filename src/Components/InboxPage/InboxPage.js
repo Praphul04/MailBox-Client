@@ -1,3 +1,4 @@
+import React from "react";
 import "./InboxPage.css";
 import { Container, Form, Button, Row, Col, ListGroup } from "react-bootstrap";
 import { Navbar } from "react-bootstrap";
@@ -12,6 +13,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UpdateList } from "../../store/Mail-thunk";
 import MessageView from "./MessageView";
+import SentMessage from "../SendMessage/SendMessage";
 
 let isinitialState = true;
 
@@ -33,11 +35,10 @@ const InboxPage = () => {
     <>
       <InboxNavbar></InboxNavbar>
       <Container fluid>
-        
         <Row style={{ height: "650px" }}>
           <Col xs={2} className=" bg-info" variant="primary">
             <ListGroup className="p-2" as="ul">
-            <Link to="text-edit">
+              <Link to="text-edit">
                 <ListGroup.Item className="m-1 bg-" action>
                   Compose
                 </ListGroup.Item>
@@ -51,15 +52,23 @@ const InboxPage = () => {
                 </ListGroup.Item>
               </Link>
               <ListGroup.Item className="m-1" action>
-              <Link to="#">sendMail</Link>
+                <Link to="#">sendMail</Link>
               </ListGroup.Item>
+              <Link to="sentmessage">
+                <ListGroup.Item className="m-1" action>
+                  sendMail
+                </ListGroup.Item>
+              </Link>
               <ListGroup.Item className="m-1" action>
                 DraftBox
               </ListGroup.Item>
             </ListGroup>
           </Col>
           <Col xs={10} className="">
-          <Routes>
+            {/* <ListGroup className="flex">
+              <ListGroupItem> sone text</ListGroupItem>
+            </ListGroup> */}
+            <Routes>
               <Route path="/inboxlist/mailview" element={<MessageView />} />
             </Routes>
             {/* <InboxList></InboxList> */}
@@ -69,9 +78,8 @@ const InboxPage = () => {
             {/* <TextEditing></TextEditing> */}
           </Col>
         </Row>
-        </Container>
+      </Container>
     </>
   );
 };
-
 export default InboxPage;

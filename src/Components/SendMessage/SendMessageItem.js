@@ -1,35 +1,40 @@
 import React from "react";
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { UpdateList } from "../../store/Mail-thunk";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
-import { DeleteMail } from "../../store/Mail-thunk";
 import { MailSliceAction } from "../../store/MailSlice";
+// import { UpdateList } from "../../Store/Mail-thunk";
+import Button from "react-bootstrap/Button";
 
-const InboxListItem = (props) => {
+// import { DeleteMail } from "../../Store/Mail-thunk";
+import { Link } from "react-router-dom";
+
+import { MymailSliceAction } from "../../store/MymailSlice";
+
+const SentMessageItem = (props) => {
   const Dispatch = useDispatch();
-  console.log('details/',props)
-
+  // console.log(props);
+  //   console.log(Items);
+  console.log("deatails/", props);
   let Readreceipt;
   if (!props.readreceipt) {
     Readreceipt = "readreceipt";
   }
-
   const ListItemHandler = () => {
-    if (props.readreceipt) {
-      Dispatch(MailSliceAction.addMessageViewinfo(props));
-      return;
-    }
-    Dispatch(UpdateList(props));
-    Dispatch(MailSliceAction.addMessageViewinfo(props));
+    // console.log("sendmeeage page", props);
+    Dispatch(MymailSliceAction.addMessageViewinfo(props));
+    // if (props.readreceipt) {
+    // Dispatch(MailSliceAction.addMessageViewinfo(props));
+    //   return;
+    // }
+    // Dispatch(UpdateList(props));
+    // Dispatch(MailSliceAction.addMessageViewinfo(props));
     // Dispatch(MailSliceAction.updataItems(props));
     // console.log(props);
-
   };
   const deleteHandler = () => {
-    Dispatch(DeleteMail(props.id));
-    console.log(props.id);
+    console.log("sendmeeage page");
+    // Dispatch(DeleteMail(props.id));
+    // console.log(props.id);
   };
   return (
     <>
@@ -38,16 +43,15 @@ const InboxListItem = (props) => {
         className="m-.3 "
         variant="primary"
         key={props.id}
-       
       >
         <Container>
           <Row>
             <Col className="pb-3">
               <div className="readreceiptbox" onClick={ListItemHandler}>
-                <div className={`${Readreceipt}`}>.</div>
-                <Link to="mailview">{props.email}</Link>
+                <Link to="sentmailview">{props.email}</Link>
               </div>
             </Col>
+
             <Col md={1} style={{ height: "20px" }}>
               <Button variant="secondary" onClick={deleteHandler}>
                 delete
@@ -59,4 +63,4 @@ const InboxListItem = (props) => {
     </>
   );
 };
-export default InboxListItem;
+export default SentMessageItem;
