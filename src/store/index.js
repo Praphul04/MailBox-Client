@@ -1,13 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import authReducer from "./auth";
-import inboxReducer from "./inboxSlice";
+import authReducer from "./AuthSlice";
+import mailReducer from "./MailSlice";
 
 const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    inbox: inboxReducer,
-  },
+  reducer: { auth: authReducer, mail: mailReducer },
 });
 
 export default store;
